@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">SocpedStorageDemo</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="open_album">Open Album</string>
+    <string name="grant_permission">Grant Permission</string>
+
+    <string name="permission_not_granted">App requires access to storage to access items stored in MediaStore.</string>
+
+    <string name="delete_dialog_title">Delete?</string>
+    <string name="delete_dialog_message">Delete %1$s?</string>
+    <string name="delete_dialog_positive">Delete</string>
+    <string name="delete_dialog_negative">Cancel</string>
+    <string name="choose_image_file">Choose Image File</string>
+    <string name="download_image_to_pictures_folder">Download Image To Pictures Folder</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="save">Save</string>
+    <string name="file_name">File Name</string>
+    <string name="write_content_in_file">Write Content in File</string>
+    <string name="select_pdf">Select PDF</string>
+    <string name="image_demo">Image Demo</string>
+    <string name="download_image">Download Image</string>
+    <string name="download_image_to_internal_folder">Download Image To Internal Folder</string>
+    <string name="access_media_location">Access Media Location</string>
+    <string name="file_demo">File Demo</string>
+    <string name="open_document_tree_demo">Open Document Tree Demo</string>
+    <string name="click_here_to_open_doc_tree">Click Here To open Doc Tree</string>
 </resources>

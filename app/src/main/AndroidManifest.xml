@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.socpedstoragedemo">
 
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"
+        />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".filedemo.FileActivity"/>
+        <activity android:name=".ImagePickerActivity"/>
+        <activity android:name=".downlaoddemo.DownloadImageActivity"/>
+        <activity android:name=".accessmedialocation.AccessMediaLocationActivity"/>
+        <activity android:name=".EditImageActivity"/>
+        <activity android:name=".folderdemo.OpenFolderActivity"/>
     </application>
 
 </manifest>
