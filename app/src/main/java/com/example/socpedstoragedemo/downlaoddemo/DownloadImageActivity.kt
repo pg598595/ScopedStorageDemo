@@ -128,6 +128,8 @@ class DownloadImageActivity : AppCompatActivity() {
 
     private fun saveToInternalStorage(bitmapImage: Bitmap): String {
 
+        var filepath = ""
+
         try {
 
             val testFile = File(
@@ -135,6 +137,7 @@ class DownloadImageActivity : AppCompatActivity() {
                     null
                 ), "TestFile.png"
             )
+            filepath = testFile.absolutePath
             if (!testFile.exists())
                 testFile.createNewFile()
 
@@ -145,10 +148,11 @@ class DownloadImageActivity : AppCompatActivity() {
             bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
 
         } catch (e: IOException) {
+            filepath = "not done"
             Log.e("TAG", "Failed")
         }
 
-        return "done"
+        return filepath
 
     }
 

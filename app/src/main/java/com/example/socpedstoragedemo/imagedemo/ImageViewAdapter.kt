@@ -1,4 +1,4 @@
-package com.example.socpedstoragedemo
+package com.example.socpedstoragedemo.imagedemo
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.socpedstoragedemo.MediaStoreModel
+import com.example.socpedstoragedemo.R
 
 class ImageViewAdapter(val onClick: (MediaStoreModel) -> Unit) :
     ListAdapter<MediaStoreModel, ImageViewHolder>(MediaStoreModel.DiffCallback) {

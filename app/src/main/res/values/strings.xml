@@ -27,4 +27,8 @@
     <string name="file_demo">File Demo</string>
     <string name="open_document_tree_demo">Open Document Tree Demo</string>
     <string name="click_here_to_open_doc_tree">Click Here To open Doc Tree</string>
+    <string name="path_for_image">Path: %1$s</string>
+    <string name="lat_for_image">LATITUDE: %1$s</string>
+    <string name="lag_for_image">LONGITUDE: %1$s</string>
+
 </resources>
