@@ -1,6 +1,5 @@
 package com.example.socpedstoragedemo.imagedemo
 
-import android.annotation.SuppressLint
 import android.app.Application
 import android.app.RecoverableSecurityException
 import android.content.ContentResolver
@@ -19,10 +18,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ImagePickerViewModel(application: Application) : AndroidViewModel(application) {
+
     private val _images = MutableLiveData<List<MediaStoreModel>>()
     val images: LiveData<List<MediaStoreModel>> get() = _images
 
@@ -73,20 +72,13 @@ class ImagePickerViewModel(application: Application) : AndroidViewModel(applicat
 
             val selection = "${MediaStore.Images.Media.DATE_TAKEN} >= ?"
 
-
-            val selectionArgs = arrayOf(
-                // Release day of the G1. :)
-                dateToTimestamp(day = 22, month = 10, year = 2008).toString()
-            )
-
-
             val sortOrder = "${MediaStore.Images.Media.DATE_TAKEN} DESC"
 
             getApplication<Application>().contentResolver.query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                projection,
-                selection,
-                selectionArgs,
+                null,
+                null,
+                null,
                 sortOrder
             )?.use { cursor ->
 
@@ -149,15 +141,6 @@ class ImagePickerViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
     }
-
-
-    @Suppress("SameParameterValue")
-    @SuppressLint("SimpleDateFormat")
-    private fun dateToTimestamp(day: Int, month: Int, year: Int): Long =
-        SimpleDateFormat("dd.MM.yyyy").let { formatter ->
-            formatter.parse("$day.$month.$year")?.time ?: 0
-        }
-
 
     override fun onCleared() {
         contentObserver?.let {

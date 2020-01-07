@@ -8,5 +8,5 @@ object Constants {
     const val CREATE_REQUEST_CODE = 4
     const val OPEN_DOCUMENT_REQUEST_CODE = 5
     const val OPEN_DIRECTORY_REQUEST_CODE = 6
-
+    const val DELETE_PERMISSION_REQUEST = 7
 }

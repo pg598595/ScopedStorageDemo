@@ -17,14 +17,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.socpedstoragedemo.R
+import com.example.socpedstoragedemo.const.CheckPemission.checkPermissionForReadWrite
+import com.example.socpedstoragedemo.const.CheckPemission.requestPermissionForReadWrite
+import com.example.socpedstoragedemo.const.Constants.DELETE_PERMISSION_REQUEST
+import com.example.socpedstoragedemo.const.Constants.PERMISSION_READ_EXTERNAL_STORAGE
 import com.example.socpedstoragedemo.databinding.ActivityImagePickerBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-
-
-private const val READ_EXTERNAL_STORAGE_REQUEST = 0x1045
-
-
-private const val DELETE_PERMISSION_REQUEST = 0x1033
 
 
 class ImagePickerActivity : AppCompatActivity() {
@@ -68,40 +66,13 @@ class ImagePickerActivity : AppCompatActivity() {
         binding.openAlbum.setOnClickListener { openMediaStore() }
         binding.grantPermissionButton.setOnClickListener { openMediaStore() }
 
-        if (!haveStoragePermission()) {
+        if (!checkPermissionForReadWrite(this)) {
             binding.welcomeView.visibility = View.VISIBLE
         } else {
             showImages()
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            READ_EXTERNAL_STORAGE_REQUEST -> {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    showImages()
-                } else {
-
-                    val showRationale =
-                        ActivityCompat.shouldShowRequestPermissionRationale(
-                            this,
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                        )
-                    if (showRationale) {
-                        showNoAccess()
-                    } else {
-                        goToSettings()
-                    }
-                }
-                return
-            }
-        }
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -116,47 +87,14 @@ class ImagePickerActivity : AppCompatActivity() {
         binding.permissionRationaleView.visibility = View.GONE
     }
 
-    private fun showNoAccess() {
-        binding.welcomeView.visibility = View.GONE
-        binding.permissionRationaleView.visibility = View.VISIBLE
-    }
-
     private fun openMediaStore() {
-        if (haveStoragePermission()) {
+        if (checkPermissionForReadWrite(this)) {
             showImages()
         } else {
-            requestPermission()
+            requestPermissionForReadWrite(this)
         }
     }
 
-    private fun goToSettings() {
-        Intent(
-            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-            Uri.parse("package:$packageName")
-        ).apply {
-            addCategory(Intent.CATEGORY_DEFAULT)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }.also { intent ->
-            startActivity(intent)
-        }
-    }
-
-    private fun haveStoragePermission() =
-        ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
-
-
-    private fun requestPermission() {
-        if (!haveStoragePermission()) {
-            val permissions = arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            ActivityCompat.requestPermissions(this, permissions, READ_EXTERNAL_STORAGE_REQUEST)
-        }
-    }
 
     private fun deleteImage(image: MediaStoreModel) {
 
