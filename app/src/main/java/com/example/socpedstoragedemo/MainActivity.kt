@@ -8,6 +8,7 @@ import com.example.socpedstoragedemo.accessmedialocation.AccessMediaLocationActi
 import com.example.socpedstoragedemo.downlaoddemo.DownloadImageActivity
 import com.example.socpedstoragedemo.filedemo.FileActivity
 import com.example.socpedstoragedemo.folderdemo.OpenFolderActivity
+import com.example.socpedstoragedemo.imagedemo.ImagePickerActivity
 
 
 class MainActivity : AppCompatActivity() {

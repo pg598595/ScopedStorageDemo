@@ -1,4 +1,4 @@
-package com.example.socpedstoragedemo
+package com.example.socpedstoragedemo.imagedemo
 
 import android.Manifest
 import android.app.Activity
@@ -16,8 +16,8 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.socpedstoragedemo.R
 import com.example.socpedstoragedemo.databinding.ActivityImagePickerBinding
-import com.example.socpedstoragedemo.imagedemo.ImageViewAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 

@@ -1,4 +1,4 @@
-package com.example.socpedstoragedemo
+package com.example.socpedstoragedemo.imagedemo
 
 import android.annotation.SuppressLint
 import android.app.Application

@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".filedemo.FileActivity"/>
-        <activity android:name=".ImagePickerActivity"/>
+        <activity android:name=".imagedemo.ImagePickerActivity"/>
         <activity android:name=".downlaoddemo.DownloadImageActivity"/>
         <activity android:name=".accessmedialocation.AccessMediaLocationActivity"/>
         <activity android:name=".EditImageActivity"/>

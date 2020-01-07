@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.socpedstoragedemo
+package com.example.socpedstoragedemo.imagedemo
 
 import android.net.Uri
 import androidx.recyclerview.widget.DiffUtil
