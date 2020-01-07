@@ -7,7 +7,7 @@ What is Shared Storage ?
 	Everything else is shared Storage is. Media Collection  and other folder
 	App ask permission to have access to storage for simple functions like User to pick profile pic and download image etc. 	all this are left behind when the app is uninstalled. And user suffer from low disk space
 
-SO to overcome this Android 10 comes with Redesigned Storage i.e Scoped Storage
+So to overcome this Android 10 comes with Redesigned Storage i.e Scoped Storage
 
 What is Scoped Storage ?
 
