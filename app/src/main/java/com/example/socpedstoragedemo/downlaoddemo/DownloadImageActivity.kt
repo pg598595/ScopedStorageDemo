@@ -1,13 +1,16 @@
 package com.example.socpedstoragedemo.downlaoddemo
 
 import android.app.DownloadManager
+import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -24,7 +27,7 @@ import java.io.IOException
 
 class DownloadImageActivity : AppCompatActivity() {
 
-    var imgUrl = "https://matrixmarketing.co.za/wp-content/uploads/2017/03/Demo-Page.jpg"
+    var imgUrl = "https://cdn.pixabay.com/photo/2014/04/14/20/11/japanese-cherry-trees-324175__340.jpg"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -155,6 +158,107 @@ class DownloadImageActivity : AppCompatActivity() {
         return filepath
 
     }
+
+    fun downloadImageWithMediaStore(view: View){
+
+        try{
+            val bitmap: Bitmap = (ivImageDownload.drawable as BitmapDrawable).bitmap
+            val values = ContentValues().apply{
+                put(MediaStore.Images.Media.DISPLAY_NAME,"imgMS.jpeg")
+                put(MediaStore.Images.Media.MIME_TYPE,"image/jpeg")
+                put(MediaStore.Images.Media.IS_PENDING,1)	}
+
+            val resolver = contentResolver
+
+
+            val collection = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+
+
+            val item = resolver.insert(collection,values)
+
+
+            if (item != null) {
+                resolver.openOutputStream(item).use { out ->
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)
+                }
+                values.clear()
+                values.put(MediaStore.Images.Media.IS_PENDING,0)
+                resolver.update(item,values,null,null)
+
+                Toast.makeText(
+                    applicationContext,
+                    "Download successfully to ${item.path}",
+                    Toast.LENGTH_LONG
+                ).show()
+
+
+            }
+
+        }
+        catch (e:Exception){
+            Toast.makeText(
+                applicationContext,
+                "$e",
+                Toast.LENGTH_LONG
+            ).show()
+
+        }
+
+    }
+
+
+    fun downloadImageWithMediaStoreToSdCard(view: View){
+
+        try{
+            val bitmap: Bitmap = (ivImageDownload.drawable as BitmapDrawable).bitmap
+            val values = ContentValues().apply{
+                put(MediaStore.Images.Media.DISPLAY_NAME,"imgMS.jpeg")
+                put(MediaStore.Images.Media.MIME_TYPE,"image/jpeg")
+                put(MediaStore.Images.Media.IS_PENDING,1)	}
+
+            val resolver = contentResolver
+           // Log.i("TAG","${MediaStore.getExternalVolumeNames(this)}")
+
+            val volumeNames = MediaStore.getExternalVolumeNames(this)
+
+
+            val collection = MediaStore.Images.Media.getContentUri(volumeNames.elementAt(1))
+
+
+            val item = resolver.insert(collection,values)
+
+
+            if (item != null) {
+                resolver.openOutputStream(item).use { out ->
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)
+                }
+                values.clear()
+                values.put(MediaStore.Images.Media.IS_PENDING,0)
+                resolver.update(item,values,null,null)
+
+                Toast.makeText(
+                    applicationContext,
+                    "Download successfully to ${item.path}",
+                    Toast.LENGTH_LONG
+                ).show()
+
+
+            }
+
+        }
+        catch (e:Exception){
+            Toast.makeText(
+                applicationContext,
+                "$e",
+                Toast.LENGTH_LONG
+            ).show()
+
+        }
+
+    }
+
+
+
 
 }
 

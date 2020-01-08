@@ -22,7 +22,9 @@
     <string name="select_pdf">Select PDF</string>
     <string name="image_demo">Image Demo</string>
     <string name="download_image">Download Image</string>
-    <string name="download_image_to_internal_folder">Download Image To Internal Folder</string>
+    <string name="download_image_to_internal_folder">Download Image To App Directory Folder</string>
+    <string name="download_image_WithMediaStore">Download Image With Media Store to Internal Storage(Pictures folder) </string>
+    <string name="download_image_WithMediaStore_to_sdCard">Download Image With Media Store to SD Card(Pictures folder)</string>
     <string name="access_media_location">Access Media Location</string>
     <string name="file_demo">File Demo</string>
     <string name="open_document_tree_demo">Open Document Tree Demo</string>
