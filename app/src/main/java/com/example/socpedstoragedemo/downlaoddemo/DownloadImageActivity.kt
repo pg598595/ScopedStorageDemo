@@ -182,16 +182,9 @@ class DownloadImageActivity : AppCompatActivity() {
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
 
-//                Toast.makeText(
-//                        applicationContext,
-//                        "support in ANDROID 10",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-
-
                 val file =  File(getExternalFilesDir(null), "DemoFile.jpg")
 
-                try {
+
 
                     var fos: FileOutputStream? = null
 
@@ -205,22 +198,8 @@ class DownloadImageActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
 
-                } catch ( e:IOException) {
-                    // Unable to create file, likely because external storage is
-                    // not currently mounted.
-                    Log.i("ExternalStorage", "Error writing $file", e)
-                    Toast.makeText(
-                        applicationContext,
-                        "Error writing ${file.path}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-
-
             }
             else{
-
 
                 val values = ContentValues().apply{
                     put(MediaStore.Images.Media.DISPLAY_NAME,"imgMS.jpeg")
