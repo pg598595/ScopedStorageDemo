@@ -1,5 +1,6 @@
 package com.example.socpedstoragedemo.downlaoddemo
 
+import android.app.Activity
 import android.app.DownloadManager
 import android.content.ContentValues
 import android.content.Context
@@ -22,6 +23,11 @@ import kotlinx.android.synthetic.main.activity_download_image.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import android.content.Intent
+import android.graphics.BitmapFactory
+import com.example.socpedstoragedemo.const.Constants
+
+
 
 
 class DownloadImageActivity : AppCompatActivity() {
@@ -42,9 +48,22 @@ class DownloadImageActivity : AppCompatActivity() {
             .dontAnimate()
             .into(ivImageDownload)
 
+    }
+
+    fun selectNewFile(view: View){
+
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1223)
 
 
     }
+
+
+
+
 
     fun downloadImage(view: View) {
 
@@ -329,6 +348,24 @@ class DownloadImageActivity : AppCompatActivity() {
     }
 
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == 1223) {
+
+            Log.i("TAG","Data=== ${data?.data}")
+
+            val bitmap = BitmapFactory.decodeStream(data?.data?.let {
+                contentResolver.openInputStream(
+                    it
+                )
+            })
+
+            ivImageView.setImageBitmap(bitmap)
+
+        }
+
+    }
 
 
 }

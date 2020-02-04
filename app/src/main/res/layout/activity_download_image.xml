@@ -1,51 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".downlaoddemo.DownloadImageActivity">
 
-    <ImageView
-        android:id="@+id/ivImageDownload"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnDownloadImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="downloadImage"
-        android:text="@string/download_image_to_pictures_folder" />
+        <ImageView
+            android:id="@+id/ivImageDownload"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
-    <Button
-        android:id="@+id/btnDownloadtoInternal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="saveFileToLocalFolder"
-        android:text="@string/download_image_to_internal_folder" />
+        <Button
+            android:id="@+id/btnDownloadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="downloadImage"
+            android:text="@string/download_image_to_pictures_folder" />
 
-    <Button
-        android:id="@+id/btnDownloadWithMediaStoreToInternal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:onClick="downloadImageWithMediaStore"
-        android:text="@string/download_image_WithMediaStore" />
+        <Button
+            android:id="@+id/btnDownloadtoInternal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="saveFileToLocalFolder"
+            android:text="@string/download_image_to_internal_folder" />
 
-    <Button
-        android:id="@+id/btnDownloadWithMediaStoreToSdCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:onClick="downloadImageWithMediaStoreToSdCard"
-        android:text="@string/download_image_WithMediaStore_to_sdCard" />
+        <Button
+            android:id="@+id/btnDownloadWithMediaStoreToInternal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="downloadImageWithMediaStore"
+            android:text="@string/download_image_WithMediaStore" />
 
+        <Button
+            android:id="@+id/btnDownloadWithMediaStoreToSdCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="downloadImageWithMediaStoreToSdCard"
+            android:text="@string/download_image_WithMediaStore_to_sdCard" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="selectNewFile"
+            android:text="Pick Image as Bitmap" />
+
+        <ImageView
+            android:layout_margin="20dp"
+            android:id="@+id/ivImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+</ScrollView>
