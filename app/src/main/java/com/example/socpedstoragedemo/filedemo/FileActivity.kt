@@ -105,7 +105,6 @@ class FileActivity : AppCompatActivity() {
         if (requestCode == OPEN_DOCUMENT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             data?.data?.also { documentUri ->
 
-
                 contentResolver.takePersistableUriPermission(
                     documentUri,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION

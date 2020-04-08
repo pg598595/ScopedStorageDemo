@@ -355,6 +355,12 @@ class DownloadImageActivity : AppCompatActivity() {
 
             Log.i("TAG","Data=== ${data?.data}")
 
+            var uri = data?.data
+            var file =  File(uri?.path);//create path from uri
+
+
+            Log.i("TAG","File=== $file")
+
             val bitmap = BitmapFactory.decodeStream(data?.data?.let {
                 contentResolver.openInputStream(
                     it
