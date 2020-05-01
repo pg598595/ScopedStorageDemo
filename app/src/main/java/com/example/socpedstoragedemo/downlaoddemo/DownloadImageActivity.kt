@@ -311,7 +311,6 @@ class DownloadImageActivity : AppCompatActivity() {
 
                 val collection = MediaStore.Images.Media.getContentUri(volumeNames.elementAt(1))
 
-
                 val item = resolver.insert(collection,values)
 
 

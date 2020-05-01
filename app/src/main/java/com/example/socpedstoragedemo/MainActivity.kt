@@ -17,9 +17,6 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_download_image.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
-import java.nio.file.Files.size
-
-
 
 
 class MainActivity : AppCompatActivity() {
